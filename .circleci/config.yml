@@ -37,7 +37,7 @@ job_environments:
     CLOUDSQL_INSTANCE: planet4-prod
     GCLOUD_CLUSTER: planet4-production
     GOOGLE_PROJECT_ID: planet4-production
-    HELM_NAMESPACE: southasia
+    HELM_NAMESPACE: southasia-staging
     HELM_RELEASE: planet4-southasia-release
     WP_DB_NAME: planet4-south-as_wordpress_release
     WP_STATELESS_BUCKET: planet4-southasia-stateless-release
