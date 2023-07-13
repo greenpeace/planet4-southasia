@@ -23,6 +23,43 @@ defaults: &defaults
 orbs:
   slack: circleci/slack@3.4.2
 
+job_environments:
+  common_environment: &common_environment
+    APP_HOSTPATH: southasia
+    CONTAINER_PREFIX: planet4-southasia
+    WP_DB_NAME_PREFIX: planet4-south-as_wordpress
+  develop_environment: &develop_environment
+    APP_ENVIRONMENT: development
+    APP_HOSTNAME: www-dev.greenpeace.org
+    CLOUDSQL_INSTANCE: p4-develop-k8s
+    GOOGLE_PROJECT_ID: planet-4-151612
+    GCLOUD_CLUSTER: p4-development
+    HELM_NAMESPACE: southasia
+    HELM_RELEASE: planet4-southasia
+    WP_DB_NAME: planet4-south-as_wordpress_develop
+    WP_STATELESS_BUCKET: planet4-southasia-stateless-develop
+  release_build_env: &release_build_env
+    GOOGLE_PROJECT_ID: planet4-production
+  release_environment: &release_environment
+    APP_ENVIRONMENT: staging
+    APP_HOSTNAME: www-stage.greenpeace.org
+    CLOUDSQL_INSTANCE: planet4-prod
+    GCLOUD_CLUSTER: planet4-production
+    GOOGLE_PROJECT_ID: planet4-production
+    HELM_NAMESPACE: southasia-staging
+    HELM_RELEASE: planet4-southasia-release
+    WP_DB_NAME: planet4-south-as_wordpress_release
+    WP_STATELESS_BUCKET: planet4-southasia-stateless-release
+  production_environment: &production_environment
+    APP_HOSTNAME: www.greenpeace.org
+    CLOUDSQL_INSTANCE: planet4-prod
+    GCLOUD_CLUSTER: planet4-production
+    GOOGLE_PROJECT_ID: planet4-production
+    HELM_NAMESPACE: southasia
+    HELM_RELEASE: planet4-southasia-master
+    MIN_REPLICA_COUNT: 2
+    WP_DB_NAME: planet4-south-as_wordpress_master
+    WP_STATELESS_BUCKET: planet4-southasia-stateless
 
 commands:
   approve_job:
